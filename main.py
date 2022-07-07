@@ -15,7 +15,7 @@ db = [
     {'trader': "Annie", "trader_id":"9","instrument_id":"APPL","instrument_name":"Apple"},
     {'trader': "Archer", "trader_id":"10","instrument_id":"MTA","instrument_name":"Meta"},
     {'trader': "James", "trader_id":"11","instrument_id":"MTA","instrument_name":"Meta"},
-    {'trader': "Thanos", "trader_id":"12","instrument_id":"PNP","instrument_name":"Phonepe"} 
+    {'trader': "Alok", "trader_id":"12","instrument_id":"PNP","instrument_name":"Phonepe"} 
 ]
 
 class City(BaseModel):
@@ -28,10 +28,13 @@ def index():
     return {'Hello' : 'Traders'}
 
 @app.get('/traders')
-def get_cities():
+def get_traders():
     return db
 
 @app.get('/traders/{trader_id}')
-def get_city(trader_id: int):
+def get_trader(trader_id: int):
     return db[trader_id-1] 
 
+@app.get('/traders/{instrument_id}')
+def get_trader(instrument_id: str):
+    return db["instrument_id":instrument_id] 
